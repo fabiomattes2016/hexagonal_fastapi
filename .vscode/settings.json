@@ -3,5 +3,18 @@
         "tests"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "local",
+            "database": "${workspaceFolder:hexagonal-mongodb-fastapi}/db.sqlite3"
+        }
+    ],
+    "workbench.editorAssociations": {
+        "*.db": "sqlite-viewer.option",
+        "*.sqlite3": "sqlite3-editor.editor",
+        "file:/**/*.csv": "jupyter-data-wrangler"
+    }
 }
