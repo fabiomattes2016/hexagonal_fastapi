@@ -12,7 +12,7 @@ from app.services.ports.authentication.get_refresh_token_service import GetRefre
 from app.services.ports.authentication.verify_token_service import VerifyTokenService
 
 
-async def createuserservice_with_mongo_dataport() -> CreateUserService:
+async def createuserservice() -> CreateUserService:
     return CreateUserServiceImpl(UserDataAdapter())
 
 

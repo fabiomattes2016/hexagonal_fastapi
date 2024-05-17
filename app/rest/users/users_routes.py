@@ -2,7 +2,7 @@ from fastapi import APIRouter, status, Depends, Request
 from fastapi.responses import JSONResponse
 from app.services.ports.users.create_user_service import CreateUserService
 from app.domain.users.schemas import CreateUserRequest
-from app.deps import createuserservice_with_mongo_dataport
+from app.deps import createuserservice
 from app.domain.users.responses import UserResponse
 from app.infrastructure.database import get_db
 from sqlalchemy.orm import Session
@@ -25,7 +25,7 @@ private_user_router = APIRouter(
 
 
 @user_router.post('', status_code=status.HTTP_201_CREATED, name="save", description="Cria um novo usuário.", response_model=CreateUserResponse)
-async def save(data: CreateUserRequest, db: Session = Depends(get_db), service: CreateUserService = Depends(createuserservice_with_mongo_dataport)):
+async def save(data: CreateUserRequest, db: Session = Depends(get_db), service: CreateUserService = Depends(createuserservice)):
     await service.save(data=data, db=db)
 
     return JSONResponse({
