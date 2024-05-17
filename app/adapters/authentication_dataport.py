@@ -10,7 +10,7 @@ settings = get_settings()
 
 
 class AuthenticationDataAdapter(AuthenticationDataPort):
-    async def get_token(data, db):
+    async def get_token(self, data, db):
         user = db.query(UserModel).filter(UserModel.email == data.username).first()
 
         if not user:
@@ -27,12 +27,12 @@ class AuthenticationDataAdapter(AuthenticationDataPort):
                 headers={'WWW-Authenticate': 'Bearer'}
             )
 
-        AuthenticationDataAdapter._verify_user_access(user=user)
+        #AuthenticationDataAdapter._verify_user_access(user=user)
 
         return await AuthenticationDataAdapter._get_user_token(user=user)
 
 
-    async def get_refresh_token(token, db):
+    async def get_refresh_token(self, token, db):
         payload = get_token_payload(token=token)
         user_id = payload.get('id', None)
 
@@ -81,7 +81,7 @@ class AuthenticationDataAdapter(AuthenticationDataPort):
         access_token = await create_access_token(payload, access_token_expiry)
 
         if not refresh_token:
-            refresh_token = await create_refresh_token(payload, access_token=access_token)
+            refresh_token = await create_refresh_token(payload, refresh_token)
 
         return TokenResponse(
             access_token=access_token,
@@ -90,7 +90,7 @@ class AuthenticationDataAdapter(AuthenticationDataPort):
         )
 
 
-    async def verify_token(token, db):
+    async def verify_token(self, token, db):
         if not token_verify(token):
             raise HTTPException(
                 status_code=401,

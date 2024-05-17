@@ -7,5 +7,5 @@ class GetRefreshTokenServiceImpl(GetRefreshTokenService):
         self.authenticationport = authenticationport
 
 
-    async def get_refresh_token(self, data, db):
-        return await self.authenticationport.get_refresh_token(data, db)
+    async def get_refresh_token(self, token, db):
+        return await self.authenticationport.get_refresh_token(token, db)

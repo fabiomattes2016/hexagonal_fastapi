@@ -12,3 +12,8 @@ class UserResponse(BaseModel):
     first_name: str
     last_name: str
     email: str
+
+
+class CreateUserResponse(BaseModel):
+    status: int
+    message: str

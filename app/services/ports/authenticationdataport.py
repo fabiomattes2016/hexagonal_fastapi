@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from app.domain.users.models import UserModel
 
 
 class AuthenticationDataPort(ABC):

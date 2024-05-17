@@ -6,5 +6,6 @@ class CreateUserServiceImpl(CreateUserService):
     def __init__(self, sqliteport: SqliteDataPort) -> None:
         self.sqliteport = sqliteport
 
+
     async def save(self, data, db):
         return await self.sqliteport.save(data, db)
