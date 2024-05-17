@@ -13,7 +13,7 @@ from app.services.ports.authentication.verify_token_service import VerifyTokenSe
 
 auth_router = APIRouter(
     prefix="/auth",
-    tags=["Autenticacao"],
+    tags=["Autenticação"],
     responses={404: {'description': 'Não encontrado.'}}
 )
 

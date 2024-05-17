@@ -12,13 +12,13 @@ from app.domain.users.responses import CreateUserResponse
 
 user_router = APIRouter(
     prefix="/users",
-    tags=["Usuarios"],
+    tags=["Usuários"],
     responses={404: {'description': 'Não encontrado.'}},
 )
 
 private_user_router = APIRouter(
     prefix="/users",
-    tags=["Usuarios"],
+    tags=["Usuários"],
     responses={404: {'description': 'Não encontrado.'}},
     dependencies=[Depends(oauth2_scheme)]
 )
