@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from app.rest.users.users_routes import user_router, private_user_router
@@ -5,6 +7,8 @@ from app.rest.authentication.authentication_routes import auth_router
 from app.infrastructure.security import JWTAuth
 from starlette.middleware.authentication import AuthenticationMiddleware
 
+
+logging.getLogger('passlib').setLevel(logging.ERROR)
 
 app = FastAPI(
     title="API's Agencia 0736",
