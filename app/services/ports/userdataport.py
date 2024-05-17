@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class SqliteDataPort(ABC):
+class UserDataPort(ABC):
     @abstractmethod
     async def save(object, db):
         pass

@@ -1,4 +1,4 @@
-from app.adapters.sqlite_dataport import SqliteDataAdapter
+from app.adapters.user_dataport import UserDataAdapter
 from app.adapters.authentication_dataport import AuthenticationDataAdapter
 
 from app.services.users.create_user_service_impl import CreateUserServiceImpl
@@ -13,7 +13,7 @@ from app.services.ports.authentication.verify_token_service import VerifyTokenSe
 
 
 async def createuserservice_with_mongo_dataport() -> CreateUserService:
-    return CreateUserServiceImpl(SqliteDataAdapter())
+    return CreateUserServiceImpl(UserDataAdapter())
 
 
 async def gettokenservice() -> GetTokenService:
